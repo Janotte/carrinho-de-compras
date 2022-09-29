@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@page import="br.inf.hobby.connection.DbConnection"%>
+<%@page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -7,8 +8,8 @@
     <%@include file="includes/head.jsp" %>
   </head>
   <body>
-    <h1>Home</h1>
-    
+  	<%@include file="includes/navbar.jsp" %>
+    <% out.print(DbConnection.getConnection()); %>
     <%@include file="includes/footer.jsp" %>
   </body>
-</html>
+</html>s

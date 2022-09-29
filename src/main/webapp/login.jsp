@@ -11,7 +11,7 @@
     	<div class="card w-50 mx-auto my-5">
     		<div class="card-header text-center">Login</div>
     		<div class="card-body">
-    			<form action="" method="post">
+    			<form action="usuario-login" method="post">
     				<div class="from-group">
     					<label>Endereço de E-mail</label>
     					<input type="email" class="form-control" name="email" placeholder="Informe seu E-mail" required="required">

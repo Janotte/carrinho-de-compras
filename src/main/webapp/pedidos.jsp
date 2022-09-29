@@ -7,6 +7,7 @@
     <%@include file="includes/head.jsp" %>
   </head>
   <body>
+  	<%@include file="includes/navbar.jsp" %>
     <h1>Pedidos</h1>
     
     <%@include file="includes/footer.jsp" %>
