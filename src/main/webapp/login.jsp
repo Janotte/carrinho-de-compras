@@ -1,5 +1,11 @@
+<%@page import="br.inf.hobby.model.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-
+<% 
+	Usuario auth = (Usuario) request.getSession().getAttribute("auth");
+	if(auth != null) {
+		response.sendRedirect("index.jsp");
+	}
+%>
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
