@@ -1,4 +1,5 @@
 <%@page import="br.inf.hobby.model.*"%>
+<%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <% 
 	Usuario auth = (Usuario) request.getSession().getAttribute("auth");
@@ -10,7 +11,7 @@
 <html lang="pt-br">
   <head>
     <title>Login - Carrinhos de Compras</title>
-    <%@include file="includes/head.jsp" %>
+    <%@include file="/includes/head.jsp"%>
   </head>
   <body>
     <div class="container">
@@ -34,6 +35,6 @@
     	</div>
     </div>
     
-    <%@include file="includes/footer.jsp" %>
+    <%@include file="/includes/footer.jsp" %>
   </body>
 </html>

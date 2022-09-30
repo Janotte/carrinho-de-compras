@@ -1,5 +1,8 @@
 <%@page import="br.inf.hobby.connection.DbConnection"%>
+<%@page import="br.inf.hobby.dao.ProdutoDao"%>
 <%@page import="br.inf.hobby.model.*"%>
+<%@page import="java.util.*"%>
+<%@page import="java.text.DecimalFormat"%>
 <%@page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <% 
 	Usuario auth = (Usuario) request.getSession().getAttribute("auth");
@@ -11,11 +14,11 @@
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
+    <%@include file="/includes/head.jsp" %>
     <title>Carrinho</title>
-    <%@include file="includes/head.jsp" %>
   </head>
   <body>
-  	<%@include file="includes/navbar.jsp" %>
+  	<%@include file="/includes/navbar.jsp" %>
   	<div class="container">
   		<h1>Carrinho</h1>
   		<div class="d-flex py-3">
@@ -54,6 +57,6 @@
 			</tbody>
 		</table>
   	</div>
-    <%@include file="includes/footer.jsp" %>
+    <%@include file="/includes/footer.jsp" %>
   </body>
 </html>

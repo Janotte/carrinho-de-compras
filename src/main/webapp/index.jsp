@@ -1,7 +1,8 @@
-<%@page import="java.util.List"%>
 <%@page import="br.inf.hobby.connection.DbConnection"%>
-<%@page import="br.inf.hobby.model.*"%>
 <%@page import="br.inf.hobby.dao.ProdutoDao"%>
+<%@page import="br.inf.hobby.model.*"%>
+<%@page import="java.util.*"%>
+<%@page import="java.text.DecimalFormat"%>
 <%@page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <% 
 	Usuario auth = (Usuario) request.getSession().getAttribute("auth");
@@ -15,11 +16,11 @@
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
+  	<%@include file="/includes/head.jsp" %>
     <title>Home</title>
-    <%@include file="includes/head.jsp" %>
   </head>
   <body>
-  	<%@include file="includes/navbar.jsp" %>
+  	<%@include file="/includes/navbar.jsp" %>
   	
   	<div class="container">
   		<div class="card-header my-3">
@@ -37,7 +38,7 @@
   							<h6 class="preco">Preço: <%=p.getPreco()%></h6>
   							<h6 class="categoria">Categoria: <%=p.getCategoria()%></h6>
   							<div class="mt-3 d-flex justify-content-between">
-  								<a href="#" class="btn btn-dark">Adicionar</a>
+  								<a href="adicionar-item?id=<%= p.getId() %>" class="btn btn-dark">Adicionar</a>
   								<a href="#" class="btn btn-primary">Comprar agora</a>
   							</div>
   							
@@ -46,11 +47,9 @@
   	  			</div>
   				<%}
   			}
-  		%>
-  			
-		  	
+  		%>	
   		</div>
   	</div>
-    <%@include file="includes/footer.jsp" %>
+    <%@include file="/includes/footer.jsp" %>
   </body>
 </html>
