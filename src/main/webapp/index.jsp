@@ -37,7 +37,7 @@
   							<h6 class="preco">Preço: <%=p.getPreco()%></h6>
   							<h6 class="categoria">Categoria: <%=p.getCategoria()%></h6>
   							<div class="mt-3 d-flex justify-content-between">
-  								<a href="#" class="btn btn-primary">Adicionar</a>
+  								<a href="#" class="btn btn-dark">Adicionar</a>
   								<a href="#" class="btn btn-primary">Comprar agora</a>
   							</div>
   							

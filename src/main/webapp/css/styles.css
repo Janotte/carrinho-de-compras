@@ -1,0 +1,13 @@
+@charset "ISO-8859-1";
+
+.table tbody td{
+	vertical-align: middle;
+}
+
+.table tbody input{
+	max-width: 100px;
+}
+
+.btn-increase, .btn-decrease {
+	box-shadow: none;
+}
