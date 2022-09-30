@@ -5,13 +5,13 @@ public class Produto {
 	private int id;
 	private String nome;
 	private String categoria;
-	private Double preco;
+	private double preco;
 	private String imagem;
 	
 	public Produto() {
 	}
 	
-	public Produto(int id, String nome, String categoria, Double preco, String imagem) {
+	public Produto(int id, String nome, String categoria, double preco, String imagem) {
 		this.id = id;
 		this.nome = nome;
 		this.categoria = categoria;
@@ -37,10 +37,10 @@ public class Produto {
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
 	}
-	public Double getPreco() {
+	public double getPreco() {
 		return preco;
 	}
-	public void setPreco(Double preco) {
+	public void setPreco(double preco) {
 		this.preco = preco;
 	}
 	public String getImagem() {

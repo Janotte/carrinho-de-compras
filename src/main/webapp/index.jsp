@@ -30,13 +30,13 @@
   		<%
   			if(!produtos.isEmpty()) {
   				for(Produto p : produtos) {%>
-  					<div class="col-md-3 my-3">
+  					<div class="col-md-6 col-lg-4 my-3">
   	  				<div class="card w-100" style="width: 18rem;">
   				  		<img src="<%=p.getImagem()%>" class="card-img-top" alt="...">
   						<div class="card-body">
-  							<h5 class="card-title"><%=p.getNome()%></h5>
-  							<h6 class="preco">Preço: <%=p.getPreco()%></h6>
-  							<h6 class="categoria">Categoria: <%=p.getCategoria()%></h6>
+  							<h5 class="card-title"><%= p.getNome()%></h5>
+  							<h6 class="preco">Preço: R$<%= p.getPreco()%></h6>
+  							<h6 class="categoria">Categoria: <%= p.getCategoria()%></h6>
   							<div class="mt-3 d-flex justify-content-between">
   								<a href="adicionar-item?id=<%= p.getId() %>" class="btn btn-dark">Adicionar</a>
   								<a href="#" class="btn btn-primary">Comprar agora</a>

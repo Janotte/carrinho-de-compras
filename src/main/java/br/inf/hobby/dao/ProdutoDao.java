@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.inf.hobby.model.Item;
 import br.inf.hobby.model.Produto;
 
 public class ProdutoDao {
@@ -37,6 +38,39 @@ public class ProdutoDao {
 				produtos.add(produto);	
 			}
 		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return produtos;
+	}
+	
+	public List<Item> obterLista(ArrayList<Item> listaItem) {
+		List<Item> produtos = new ArrayList<Item>();
+		
+		try {
+			if (listaItem.size() > 0) {
+				for(Item item : listaItem) {
+					query = "select * from produtos where id=?";
+					pst = this.con.prepareStatement(query);
+					pst.setInt(1, item.getId());
+					rs = pst.executeQuery();
+					
+					while(rs.next()) {
+						Item row = new Item();
+						row.setId(rs.getInt("id"));
+						row.setNome(rs.getString("nome"));
+						row.setCategoria(rs.getString("categoria"));
+						row.setPreco(rs.getDouble("preco") * item.getQuantidade());
+						row.setQuantidade(item.getQuantidade());
+						row.setImagem(rs.getString("imagem"));
+						
+						
+						produtos.add(row);
+					}
+				}
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
 			e.printStackTrace();
 		}
 		
