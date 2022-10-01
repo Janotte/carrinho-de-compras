@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import br.inf.hobby.model.Item;
@@ -75,5 +76,29 @@ public class ProdutoDao {
 		}
 		
 		return produtos;
+	}
+	
+	public double obterTotalCarrinho(ArrayList<Item> listaItem) {
+		double total = 0;
+
+		try {
+			if (listaItem.size() > 0) {
+				 for (Item item : listaItem) {
+					 query = "select preco from produtos where id=?";
+					 pst = this.con.prepareStatement(query);
+					 pst.setInt(1, item.getId());
+					 rs = pst.executeQuery();
+					 
+					 while (rs.next() ) {
+						 total += item.getQuantidade() * rs.getDouble("preco");
+					 }
+					
+				 }
+			}	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return total;
 	}
 }

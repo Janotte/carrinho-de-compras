@@ -14,7 +14,10 @@
 		          	<a class="nav-link active" aria-current="page" href="index.jsp">Home</a>
 		        </li>
 		        <li class="nav-item">
-		          	<a class="nav-link" href="carrinho.jsp">Carrinho</a>
+		          	<a class="nav-link" href="carrinho.jsp">
+		          		Carrinho
+		          		<span class="badge bg-info">${lista_item.size()}</span>
+		          	</a>
 		        </li>
 		        <%
 		        if(auth != null){%>

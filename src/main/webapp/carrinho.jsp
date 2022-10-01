@@ -14,7 +14,9 @@
 	if (lista_item != null) {
 		ProdutoDao produtoDao = new ProdutoDao(DbConnection.getConnection());
 		listaItem = produtoDao.obterLista(lista_item);
+		double total = produtoDao.obterTotalCarrinho(lista_item);
 		request.setAttribute("lista_item", lista_item);
+		request.setAttribute("total", total);
 	}
 %>
 
@@ -50,9 +52,9 @@
 								<form action="" method="post" class="form-inline">
 									<input type="hidden" name="id" value="<%= i.getId()%>" class="form-input">
 									<div class="form-group d-flex justify-content-start">
-										<a class="btn btn-increase" href=""><i class="bi bi-plus-square"></i></a>
+										<a class="btn btn-increase" href="quantidade-inc-dec"><i class="bi bi-plus-square"></i></a>
 										<input type="text" name="quantidade" class="form-control" value="1" readonly>
-										<a class="btn btn-decrease" href=""><i class="bi bi-dash-square"></i></a>
+										<a class="btn btn-decrease" href="quantidade-inc-dec"><i class="bi bi-dash-square"></i></a>
 									</div>
 								</form>
 							</td>
@@ -67,7 +69,7 @@
 		</table>
 		<div class="d-flex justify-content-end py-3">
   			<a class="mx-3 btn btn-primary" href="#">Check Out</a>
-  			<h3>Valor Total: R$ 999,00</h3>
+  			<h3>Valor Total: R$ ${(total>0)?total:0}</h3>
   		</div>
   	</div>
     <%@include file="/includes/footer.jsp" %>

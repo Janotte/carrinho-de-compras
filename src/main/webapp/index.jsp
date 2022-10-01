@@ -12,6 +12,11 @@
 	
 	ProdutoDao produtoDao = new ProdutoDao(DbConnection.getConnection());
 	List<Produto> produtos = produtoDao.obterTodosProdutos();
+	
+	ArrayList<Item> lista_item = (ArrayList<Item>) session.getAttribute("lista-item");
+	if (lista_item != null) {
+		request.setAttribute("lista_item", lista_item);
+	}
 %>
 <!DOCTYPE html>
 <html lang="pt-br">

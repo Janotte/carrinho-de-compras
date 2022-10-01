@@ -6,6 +6,10 @@
 	if(auth != null) {
 		response.sendRedirect("index.jsp");
 	}
+	ArrayList<Item> lista_item = (ArrayList<Item>) session.getAttribute("lista-item");
+	if (lista_item != null) {
+		request.setAttribute("lista_item", lista_item);
+	}
 %>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -14,6 +18,7 @@
     <%@include file="/includes/head.jsp"%>
   </head>
   <body>
+  	<%@include file="/includes/navbar.jsp" %>
     <div class="container">
     	<div class="card w-50 mx-auto my-5">
     		<div class="card-header text-center">Login</div>
