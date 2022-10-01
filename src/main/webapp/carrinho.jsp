@@ -4,7 +4,9 @@
 <%@page import="java.util.*"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<% 
+<%
+	DecimalFormat df = new DecimalFormat("#.##");
+	request.setAttribute("df", df);
 	Usuario auth = (Usuario) request.getSession().getAttribute("auth");
 	if(auth != null) {
 		request.setAttribute("auth", auth);
@@ -47,14 +49,14 @@
 						<tr>
 							<td><%= i.getNome()%></td>
 							<td><%= i.getCategoria()%></td>
-							<td><%= i.getPreco()%></td>
+							<td><%= df.format(i.getPreco())%></td>
 							<td>
 								<form action="" method="post" class="form-inline">
 									<input type="hidden" name="id" value="<%= i.getId()%>" class="form-input">
 									<div class="form-group d-flex justify-content-start">
-										<a class="btn btn-increase" href="quantidade-inc-dec"><i class="bi bi-plus-square"></i></a>
-										<input type="text" name="quantidade" class="form-control" value="1" readonly>
-										<a class="btn btn-decrease" href="quantidade-inc-dec"><i class="bi bi-dash-square"></i></a>
+										<a class="btn btn-increase" href="quantidade-inc-dec?action=dec&id=<%= i.getId()%>"><i class="bi bi-dash-square"></i></a>
+										<input type="text" name="quantidade" class="form-control" value=<%= i.getQuantidade()%> readonly>
+										<a class="btn btn-decrease" href="quantidade-inc-dec?action=inc&id=<%= i.getId()%>"><i class="bi bi-plus-square"></i></a>
 									</div>
 								</form>
 							</td>
@@ -69,7 +71,7 @@
 		</table>
 		<div class="d-flex justify-content-end py-3">
   			<a class="mx-3 btn btn-primary" href="#">Check Out</a>
-  			<h3>Valor Total: R$ ${(total>0)?total:0}</h3>
+  			<h3>Valor Total: R$ ${(total>0)?df.format(total):0}</h3>
   		</div>
   	</div>
     <%@include file="/includes/footer.jsp" %>
