@@ -51,13 +51,14 @@
 							<td><%= i.getCategoria()%></td>
 							<td><%= df.format(i.getPreco())%></td>
 							<td>
-								<form action="" method="post" class="form-inline">
+								<form action="compre-agora" method="post" class="form-inline">
 									<input type="hidden" name="id" value="<%= i.getId()%>" class="form-input">
-									<div class="form-group d-flex justify-content-start">
+									<div class="form-group d-flex justify-content-start w-50">
 										<a class="btn btn-increase" href="quantidade-inc-dec?action=dec&id=<%= i.getId()%>"><i class="bi bi-dash-square"></i></a>
-										<input type="text" name="quantidade" class="form-control" value=<%= i.getQuantidade()%> readonly>
+										<input type="text" name="quantidade" class="form-control w-50" value=<%= i.getQuantidade()%> readonly>
 										<a class="btn btn-decrease" href="quantidade-inc-dec?action=inc&id=<%= i.getId()%>"><i class="bi bi-plus-square"></i></a>
-									</div>
+										<button type="submit" class="btn btn-sm btn-primary">Comprar</button>
+									</div>	
 								</form>
 							</td>
 							<td>
