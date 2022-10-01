@@ -61,7 +61,7 @@
 								</form>
 							</td>
 							<td>
-								<a class="btn btn-sm btn-danger btn-remove" href="">Excluir</a>
+								<a class="btn btn-sm btn-danger" href="remove-item?id=<%= i.getId()%>">Excluir</a>
 							</td> 						
 						</tr>
 					<%}
