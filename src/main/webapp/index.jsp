@@ -44,7 +44,7 @@
   							<h6 class="categoria">Categoria: <%= p.getCategoria()%></h6>
   							<div class="mt-3 d-flex justify-content-between">
   								<a href="adicionar-item?id=<%= p.getId() %>" class="btn btn-dark">Adicionar</a>
-  								<a href="#" class="btn btn-primary">Comprar agora</a>
+  								<a href="compre-agora?quantidade=1&id=<%= p.getId()%>" class="btn btn-primary">Comprar agora</a>
   							</div>
   							
   						</div>

@@ -2,7 +2,9 @@ package br.inf.hobby.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.servlet.ServletException;
@@ -11,6 +13,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.inf.hobby.connection.DbConnection;
+import br.inf.hobby.dao.PedidoDao;
+import br.inf.hobby.model.Item;
 import br.inf.hobby.model.Pedido;
 import br.inf.hobby.model.Usuario;
 
@@ -35,16 +40,37 @@ public class CompreAgoraServlet extends HttpServlet {
 					produtoQuantidade = 1;
 				}
 				
-				Pedido pedido = new Pedido();
-				pedido.setId(Integer.parseInt(produtoId));
-				pedido.setUsuarioId(auth.getId());
-				pedido.setQuantidade(produtoQuantidade);
-				pedido.setData(fomatter.format(date));
+				Pedido pedidoModel = new Pedido();
+				pedidoModel.setUsuarioId(auth.getId());
+				pedidoModel.setProdutoId(Integer.parseInt(produtoId));
+				pedidoModel.setQuantidade(produtoQuantidade);
+				pedidoModel.setData(fomatter.format(date));
+				
+				PedidoDao pedidoDao = new PedidoDao(DbConnection.getConnection());
+				boolean result = pedidoDao.inserirPedido(pedidoModel);
+				
+				if (result) {
+					ArrayList<Item> lista_item = (ArrayList<Item>) request.getSession().getAttribute("lista-item");
+					
+					if (lista_item != null) {
+						for (Item i : lista_item) {
+							if (i.getId() == Integer.parseInt(produtoId)) {
+								lista_item.remove(lista_item.indexOf(i));
+								break;
+							}
+						}
+					}
+					response.sendRedirect("pedidos.jsp");
+				} else {
+					out.print("Falho no Pedido");
+				}
 				
 			} else {
 				response.sendRedirect("login.jsp");
 			}
-		}
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		} 
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
