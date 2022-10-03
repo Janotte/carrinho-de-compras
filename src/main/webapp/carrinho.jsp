@@ -5,21 +5,21 @@
 <%@page import="java.text.DecimalFormat"%>
 <%@page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%
-	DecimalFormat df = new DecimalFormat("#.##");
-	request.setAttribute("df", df);
-	Usuario auth = (Usuario) request.getSession().getAttribute("auth");
-	if(auth != null) {
-		request.setAttribute("auth", auth);
-	}
-	ArrayList<Item> lista_item = (ArrayList<Item>) session.getAttribute("lista-item");
-	List<Item> listaItem = null;
-	if (lista_item != null) {
-		ProdutoDao produtoDao = new ProdutoDao(DbConnection.getConnection());
-		listaItem = produtoDao.obterLista(lista_item);
-		double total = produtoDao.obterTotalCarrinho(lista_item);
-		request.setAttribute("lista_item", lista_item);
-		request.setAttribute("total", total);
-	}
+DecimalFormat df = new DecimalFormat("#.00");
+request.setAttribute("df", df);
+Usuario auth = (Usuario) request.getSession().getAttribute("auth");
+if (auth != null) {
+	request.setAttribute("auth", auth);
+}
+ArrayList<Item> lista_item = (ArrayList<Item>) session.getAttribute("lista-item");
+List<Item> listaItem = null;
+if (lista_item != null) {
+	ProdutoDao produtoDao = new ProdutoDao(DbConnection.getConnection());
+	listaItem = produtoDao.obterLista(lista_item);
+	double total = produtoDao.obterTotalCarrinho(lista_item);
+	request.setAttribute("lista_item", lista_item);
+	request.setAttribute("total", total);
+}
 %>
 
 <!DOCTYPE html>

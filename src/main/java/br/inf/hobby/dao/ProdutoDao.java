@@ -77,6 +77,31 @@ public class ProdutoDao {
 		return produtos;
 	}
 	
+	public Produto obterProdutoUnico(int id) {
+		Produto produto = null;
+		
+		try {
+			query = "select * from produtos where id=?";
+			pst = this.con.prepareStatement(query);
+			pst.setInt(1, id);
+			rs = pst.executeQuery();
+			
+			while(rs.next()) {
+				produto = new Produto();
+				produto.setId(rs.getInt("id"));
+				produto.setNome(rs.getString("nome"));
+				produto.setCategoria(rs.getString("categoria"));
+				produto.setPreco(rs.getDouble("preco"));
+				produto.setImagem(rs.getString("imagem"));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return produto;
+	}
+	
 	public double obterTotalCarrinho(ArrayList<Item> listaItem) {
 		double total = 0;
 

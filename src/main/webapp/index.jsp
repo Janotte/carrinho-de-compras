@@ -4,19 +4,21 @@
 <%@page import="java.util.*"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<% 
-	Usuario auth = (Usuario) request.getSession().getAttribute("auth");
-	if(auth != null) {
-		request.setAttribute("auth", auth);
-	}
-	
-	ProdutoDao produtoDao = new ProdutoDao(DbConnection.getConnection());
-	List<Produto> produtos = produtoDao.obterTodosProdutos();
-	
-	ArrayList<Item> lista_item = (ArrayList<Item>) session.getAttribute("lista-item");
-	if (lista_item != null) {
-		request.setAttribute("lista_item", lista_item);
-	}
+<%
+DecimalFormat df = new DecimalFormat("#.00");
+request.setAttribute("df", df);
+Usuario auth = (Usuario) request.getSession().getAttribute("auth");
+if (auth != null) {
+	request.setAttribute("auth", auth);
+}
+
+ProdutoDao produtoDao = new ProdutoDao(DbConnection.getConnection());
+List<Produto> produtos = produtoDao.obterTodosProdutos();
+
+ArrayList<Item> lista_item = (ArrayList<Item>) session.getAttribute("lista-item");
+if (lista_item != null) {
+	request.setAttribute("lista_item", lista_item);
+}
 %>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -40,7 +42,7 @@
   				  		<img src="<%=p.getImagem()%>" class="card-img-top" alt="...">
   						<div class="card-body">
   							<h5 class="card-title"><%= p.getNome()%></h5>
-  							<h6 class="preco">Preço: R$<%= p.getPreco()%></h6>
+  							<h6 class="preco">Preço: R$<%= df.format(p.getPreco())%></h6>
   							<h6 class="categoria">Categoria: <%= p.getCategoria()%></h6>
   							<div class="mt-3 d-flex justify-content-between">
   								<a href="adicionar-item?id=<%= p.getId() %>" class="btn btn-dark">Adicionar</a>
