@@ -24,6 +24,7 @@ public class QuantidadeIncrementaDecrementa extends HttpServlet {
 			String acao = request.getParameter("action");
 			int id = Integer.parseInt(request.getParameter("id"));
 			
+			@SuppressWarnings("unchecked")
 			ArrayList<Item> lista_item = (ArrayList<Item>) request.getSession().getAttribute("lista-item");
 			
 			if (acao != null && id >= 1) {

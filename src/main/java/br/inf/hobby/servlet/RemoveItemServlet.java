@@ -21,6 +21,7 @@ public class RemoveItemServlet extends HttpServlet {
 		try(PrintWriter out = response.getWriter()) {
 			String id = request.getParameter("id");
 			if ( id != null) {
+				@SuppressWarnings("unchecked")
 				ArrayList<Item> lista_item = (ArrayList<Item>) request.getSession().getAttribute("lista-item");
 				
 				if (lista_item != null) {

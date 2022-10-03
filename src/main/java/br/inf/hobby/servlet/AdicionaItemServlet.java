@@ -30,6 +30,7 @@ public class AdicionaItemServlet extends HttpServlet {
 			item.setQuantidade(1);
 
 			HttpSession session = request.getSession();
+			@SuppressWarnings("unchecked")
 			ArrayList<Item> lista_item = (ArrayList<Item>) session.getAttribute("lista-item");
 
 			if (lista_item == null) {

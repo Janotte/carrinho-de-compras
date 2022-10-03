@@ -50,6 +50,7 @@ public class CompreAgoraServlet extends HttpServlet {
 				boolean result = pedidoDao.inserirPedido(pedidoModel);
 				
 				if (result) {
+					@SuppressWarnings("unchecked")
 					ArrayList<Item> lista_item = (ArrayList<Item>) request.getSession().getAttribute("lista-item");
 					
 					if (lista_item != null) {

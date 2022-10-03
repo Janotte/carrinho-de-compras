@@ -71,8 +71,9 @@
 			</tbody>
 		</table>
 		<div class="d-flex justify-content-end py-3">
-  			<a class="mx-3 btn btn-primary" href="#">Check Out</a>
-  			<h3>Valor Total: R$ ${(total>0)?df.format(total):0}</h3>
+			<a class="mx-3 btn btn-warning" href="index.jsp">Continuar Comprando</a>
+  			<a class="mx-3 btn btn-primary" href="check-out">Check Out</a>	
+  			<h3><span>Valor Total:</span><span> R$ ${(total>0)?df.format(total):0}</span></h3>
   		</div>
   	</div>
     <%@include file="/includes/footer.jsp" %>
